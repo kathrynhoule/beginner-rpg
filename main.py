@@ -7,7 +7,9 @@ import sys
 class Game:
      def __init__(self):
           pygame.init()
+
           self.screen = pygame.display.set_mode((WIN_WIDTH, WIN_HEIGHT))
+
           self.clock = pygame.time.Clock()
           self.running = True
 
@@ -43,9 +45,11 @@ class Game:
                if hasattr(layer, 'data'):
                     for x, y, tile in layer.tiles():
                          if tile:
-                              self.screen.blit(tile, (x * self.tmx_data.tilewidth, y * self.tmx_data.tileheight))
+                              tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
+                              self.screen.blit(tile, (x * TILESIZE, y * TILESIZE))
 
           self.all_sprites.draw(self.screen)
+
           self.clock.tick(FPS)
           pygame.display.update()
 
