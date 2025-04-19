@@ -2,6 +2,7 @@ import pygame
 from pytmx.util_pygame import load_pygame
 from sprites import *
 from config import *
+from camera import *
 import sys
 
 class Game:
@@ -27,7 +28,9 @@ class Game:
           self.enemies = pygame.sprite.LayeredUpdates()
           self.attacks = pygame.sprite.LayeredUpdates()
 
-          self.player = Player(self, 1, 2)
+          self.player = Player(self, 18, 4)
+
+          self.camera = Camera(self.tmx_data.width * TILESIZE, self.tmx_data.height * TILESIZE)
 
      def events(self):
           # game loop events
@@ -39,6 +42,7 @@ class Game:
      def update(self):
           # game loop updates
           self.all_sprites.update()
+          self.camera.update(self.player)
 
      def draw(self):
           self.screen.fill(BLACK)
@@ -48,9 +52,11 @@ class Game:
                     for x, y, tile in layer.tiles():
                          if tile:
                               tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
-                              self.screen.blit(tile, (x * TILESIZE, y * TILESIZE))
+                              tile_rect = pygame.Rect(x * TILESIZE, y * TILESIZE, TILESIZE, TILESIZE)
+                              self.screen.blit(tile, self.camera.apply_rect(tile_rect))
 
-          self.all_sprites.draw(self.screen)
+          for sprite in self.all_sprites:
+               self.screen.blit(sprite.image, self.camera.apply(sprite))
 
           self.clock.tick(FPS)
           pygame.display.update()
