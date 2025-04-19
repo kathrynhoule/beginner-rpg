@@ -3,6 +3,15 @@ from config import *
 import math
 import random
 
+class Spritesheet:
+     def __init__(self, file):
+          self.sheet = pygame.image.load(file).convert_alpha()
+     
+     def get_sprite(self, x, y, width, height):
+          sprite = pygame.Surface([width, height], pygame.SRCALPHA)
+          sprite.blit(self.sheet, (0,0), (x, y, width, height))
+          return sprite
+
 class Player(pygame.sprite.Sprite):
      def __init__(self, game, x, y):
      
@@ -21,12 +30,12 @@ class Player(pygame.sprite.Sprite):
 
           self.facing = "down"
 
-          self.image = pygame.Surface([self.width, self.height])
-          self.image.fill(RED)
+          self.image = self.game.character_spritesheet.get_sprite(0, 0, 16, 32)
+          self.image = pygame.transform.scale(self.image, (TILESIZE, TILESIZE * 2))
 
           self.rect = self.image.get_rect()
           self.rect.x = self.x
-          self.rect.y = self.y
+          self.rect.y = self.y - (self.rect.height - TILESIZE)
 
      def update(self):
           self.movement()

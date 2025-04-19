@@ -13,6 +13,8 @@ class Game:
           self.clock = pygame.time.Clock()
           self.running = True
 
+          self.character_spritesheet = Spritesheet("sprite/ghost_base_sprites.png")
+
      def new(self):
           # a new game starts
           self.playing = True
