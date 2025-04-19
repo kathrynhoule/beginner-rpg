@@ -1,4 +1,5 @@
-import pygame 
+import pygame
+from pytmx.util_pygame import load_pygame
 from sprites import *
 from config import *
 import sys
@@ -13,6 +14,9 @@ class Game:
      def new(self):
           # a new game starts
           self.playing = True
+
+          # loads map
+          self.tmx_data = load_pygame("map/ghost_home_interior_map.tmx")
 
           self.all_sprites = pygame.sprite.LayeredUpdates()
           self.blocks = pygame.sprite.LayeredUpdates()
@@ -34,6 +38,13 @@ class Game:
 
      def draw(self):
           self.screen.fill(BLACK)
+
+          for layer in self.tmx_data.visible_layers:
+               if hasattr(layer, 'data'):
+                    for x, y, tile in layer.tiles():
+                         if tile:
+                              self.screen.blit(tile, (x * self.tmx_data.tilewidth, y * self.tmx_data.tileheight))
+
           self.all_sprites.draw(self.screen)
           self.clock.tick(FPS)
           pygame.display.update()
