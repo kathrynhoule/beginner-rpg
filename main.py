@@ -3,6 +3,7 @@ from pytmx.util_pygame import load_pygame
 from sprites import *
 from config import *
 from camera import *
+from map import TiledMap
 import sys
 
 class Game:
@@ -20,21 +21,17 @@ class Game:
           # a new game starts
           self.playing = True
 
-          # loads map
-          self.tmx_data = load_pygame("map/ghost_home_interior_map.tmx")
-
           self.all_sprites = pygame.sprite.LayeredUpdates()
           self.blocks = pygame.sprite.LayeredUpdates()
           self.enemies = pygame.sprite.LayeredUpdates()
           self.attacks = pygame.sprite.LayeredUpdates()
 
+          # loads map
+          self.map = TiledMap(self, "map/ghost_home_interior_map.tmx")
+
           self.player = Player(self, 18, 4)
 
-          self.camera = Camera(self.tmx_data.width * TILESIZE, self.tmx_data.height * TILESIZE)
-
-          for obj in self.tmx_data.get_layer_by_name("Collisions").tiles():
-               x, y, tile = obj
-               Block(self, x, y)
+          self.camera = Camera(self.map.width, self.map.height)
 
      def events(self):
           # game loop events
@@ -51,27 +48,16 @@ class Game:
      def draw(self):
           self.screen.fill(BLACK)
 
-          # draws objects that the player walks in front of or above
-          for layer in self.tmx_data.visible_layers:
-               if layer.name in ["Walls_Flooring", "Objects_Ground", "Objects_Front"]:
-                    for x, y, tile in layer.tiles():
-                         if tile:
-                              tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
-                              tile_rect = pygame.Rect(x * TILESIZE, y * TILESIZE, TILESIZE, TILESIZE)
-                              self.screen.blit(tile, self.camera.apply_rect(tile_rect))
+          # draws background
+          self.map.draw_map(self.screen, self.camera)
 
           # draws player and other sprites
           for sprite in self.all_sprites:
                self.screen.blit(sprite.image, self.camera.apply(sprite))
 
-          # draws objects that player walks behind
-          for layer in self.tmx_data.visible_layers:
-               if layer.name == "Objects_Behind":
-                    for x, y, tile in layer.tiles():
-                         if tile:
-                              tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
-                              tile_rect = pygame.Rect(x * TILESIZE, y * TILESIZE, TILESIZE, TILESIZE)
-                              self.screen.blit(tile, self.camera.apply_rect(tile_rect))
+          # draws foreground layers
+          for layer in self.map.front_layers:
+               self.map.draw_layer(self.screen, self.camera, layer)
 
           self.clock.tick(FPS)
           pygame.display.update()

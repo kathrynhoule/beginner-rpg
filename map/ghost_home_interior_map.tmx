@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="8" nextobjectid="1">
+<map version="1.10" tiledversion="1.11.0" orientation="orthogonal" renderorder="right-down" width="30" height="20" tilewidth="16" tileheight="16" infinite="0" nextlayerid="9" nextobjectid="19">
  <tileset firstgid="1" source="../../../../../Pictures/art/galvanyze/ghost_home_interior.tsx"/>
  <layer id="1" name="Walls_Flooring" width="30" height="20" locked="1">
   <data encoding="csv">
@@ -121,4 +121,46 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="8" name="Interactions" locked="1">
+  <object id="9" name="Mirror" x="224.375" y="32.25" width="16.375" height="33">
+   <properties>
+    <property name="text" value="It's my full-length mirror. Heehee, I look pretty great!"/>
+   </properties>
+  </object>
+  <object id="10" name="wardrobe" x="208.125" y="31.625" width="15.75" height="34">
+   <properties>
+    <property name="text" value="It's the wardrobe I built! It's also...empty. Maybe I should actually buy some clothes to put in it..."/>
+   </properties>
+  </object>
+  <object id="12" name="papers" x="208" y="92.875" width="35.875" height="20.625">
+   <properties>
+    <property name="text" value="There are some papers on my desk. It's a request from the witch that lives in the Northern part of the forest for me to go see her. She always gives me work, so I really should pay her a visit soon."/>
+   </properties>
+  </object>
+  <object id="13" name="poster" x="256.25" y="148.625" width="20.25" height="32.125">
+   <properties>
+    <property name="text" value="It's a poster Heart gave me as a reminder for some event in the city he wants us to go to together. It's happening really soon, so I should probably go meet up with him."/>
+   </properties>
+  </object>
+  <object id="15" name="radishes" x="204.625" y="167.875" width="29" height="27.875">
+   <properties>
+    <property name="text" value="A bunch of radishes! My favourite! And I picked them myself! But I'm not really hungry right now..."/>
+   </properties>
+  </object>
+  <object id="16" name="flowers" x="301.75" y="166.25" width="17.625" height="28.5">
+   <properties>
+    <property name="text" value="Some flowers that Heart gave me. I don't usually like flowers, but these are so fun cuz they move on their own!"/>
+   </properties>
+  </object>
+  <object id="17" name="bookcase" x="319.875" y="166.25" width="32.375" height="28.875">
+   <properties>
+    <property name="text" value="My bookcase filled with all my books! ....I haven't read most of them."/>
+   </properties>
+  </object>
+  <object id="18" name="umbrellabucket" x="333.5" y="231" width="17.875" height="26">
+   <properties>
+    <property name="text" value="A bucket with my favourite umbrella! I should probably take it in case it rains, or in case I come across any unfriendly creatures outside."/>
+   </properties>
+  </object>
+ </objectgroup>
 </map>
