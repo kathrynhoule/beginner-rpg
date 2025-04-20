@@ -32,6 +32,10 @@ class Game:
 
           self.camera = Camera(self.tmx_data.width * TILESIZE, self.tmx_data.height * TILESIZE)
 
+          for obj in self.tmx_data.get_layer_by_name("Collisions").tiles():
+               x, y, tile = obj
+               Block(self, x, y)
+
      def events(self):
           # game loop events
           for event in pygame.event.get():
@@ -47,16 +51,27 @@ class Game:
      def draw(self):
           self.screen.fill(BLACK)
 
+          # draws objects that the player walks in front of or above
           for layer in self.tmx_data.visible_layers:
-               if hasattr(layer, 'data'):
+               if layer.name in ["Walls_Flooring", "Objects_Ground", "Objects_Front"]:
                     for x, y, tile in layer.tiles():
                          if tile:
                               tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
                               tile_rect = pygame.Rect(x * TILESIZE, y * TILESIZE, TILESIZE, TILESIZE)
                               self.screen.blit(tile, self.camera.apply_rect(tile_rect))
 
+          # draws player and other sprites
           for sprite in self.all_sprites:
                self.screen.blit(sprite.image, self.camera.apply(sprite))
+
+          # draws objects that player walks behind
+          for layer in self.tmx_data.visible_layers:
+               if layer.name == "Objects_Behind":
+                    for x, y, tile in layer.tiles():
+                         if tile:
+                              tile = pygame.transform.scale(tile, (TILESIZE, TILESIZE))
+                              tile_rect = pygame.Rect(x * TILESIZE, y * TILESIZE, TILESIZE, TILESIZE)
+                              self.screen.blit(tile, self.camera.apply_rect(tile_rect))
 
           self.clock.tick(FPS)
           pygame.display.update()
