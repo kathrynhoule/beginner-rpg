@@ -157,7 +157,7 @@
     <property name="text" value="My bookcase filled with all my books! ....I haven't read most of them."/>
    </properties>
   </object>
-  <object id="18" name="umbrellabucket" x="333.5" y="231" width="17.875" height="26">
+  <object id="18" name="umbrellabucket" x="333.5" y="217" width="17.875" height="40">
    <properties>
     <property name="text" value="A bucket with my favourite umbrella! I should probably take it in case it rains, or in case I come across any unfriendly creatures outside."/>
    </properties>

@@ -40,7 +40,7 @@ class Player(pygame.sprite.Sprite):
           self.rect = self.image.get_rect()
           self.rect.topleft = (self.x, self.y)
 
-          self.hitbox = pygame.Rect(self.rect.x, self.rect.y + TILESIZE, TILESIZE, TILESIZE // 2)
+          self.hitbox = pygame.Rect(self.rect.x, self.rect.y + TILESIZE, TILESIZE, (TILESIZE + 10) // 2)
      
      def scale_sprite(self, sprite, width=16, height=22):
           scale_factor = TILESIZE / width
@@ -158,3 +158,23 @@ class Block(pygame.sprite.Sprite):
           self.rect = self.image.get_rect()
           self.rect.x = self.x
           self.rect.y = self.y
+
+class Interactions(pygame.sprite.Sprite):
+     def __init__(self, game, x, y, w, h, text):
+          self.game = game
+          self._layer = OBJECT_LAYER
+          self.groups = self.game.all_sprites, self.game.interactions
+          pygame.sprite.Sprite.__init__(self, self.groups)
+
+          self.x = x
+          self.y = y
+          self.width = w
+          self.height = h
+
+          self.image = pygame.Surface((self.width, self.height), pygame.SRCALPHA)
+          self.rect = self.image.get_rect(topleft=(self.x, self.y))
+
+          self.text = text
+
+          # for debugging
+          print(f"Interaction at ({x}, {y}) with size ({w}, {h}) and text: {text}")
