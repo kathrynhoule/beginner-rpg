@@ -122,37 +122,37 @@
 </data>
  </layer>
  <objectgroup id="8" name="Interactions" locked="1">
-  <object id="9" name="Mirror" x="224.375" y="32.25" width="16.375" height="33">
+  <object id="9" name="Mirror" x="224.375" y="32.25" width="22.0114" height="37.7273">
    <properties>
     <property name="text" value="It's my full-length mirror. Heehee, I look pretty great!"/>
    </properties>
   </object>
-  <object id="10" name="wardrobe" x="208.125" y="31.625" width="15.75" height="34">
+  <object id="10" name="wardrobe" x="208.125" y="31.625" width="15.75" height="38.9091">
    <properties>
     <property name="text" value="It's the wardrobe I built! It's also...empty. Maybe I should actually buy some clothes to put in it..."/>
    </properties>
   </object>
-  <object id="12" name="papers" x="208" y="92.875" width="35.875" height="20.625">
+  <object id="12" name="papers" x="208" y="91.2386" width="39.1477" height="22.2614">
    <properties>
     <property name="text" value="There are some papers on my desk. It's a request from the witch that lives in the Northern part of the forest for me to go see her. She always gives me work, so I really should pay her a visit soon."/>
    </properties>
   </object>
-  <object id="13" name="poster" x="256.25" y="148.625" width="20.25" height="32.125">
+  <object id="13" name="poster" x="256.25" y="148.625" width="23.3409" height="36.6705">
    <properties>
     <property name="text" value="It's a poster Heart gave me as a reminder for some event in the city he wants us to go to together. It's happening really soon, so I should probably go meet up with him."/>
    </properties>
   </object>
-  <object id="15" name="radishes" x="204.625" y="167.875" width="29" height="27.875">
+  <object id="15" name="radishes" x="204.625" y="167.875" width="32.6364" height="31.3295">
    <properties>
     <property name="text" value="A bunch of radishes! My favourite! And I picked them myself! But I'm not really hungry right now..."/>
    </properties>
   </object>
-  <object id="16" name="flowers" x="301.75" y="166.25" width="17.625" height="28.5">
+  <object id="16" name="flowers" x="300.477" y="166.25" width="18.8977" height="30.6818">
    <properties>
     <property name="text" value="Some flowers that Heart gave me. I don't usually like flowers, but these are so fun cuz they move on their own!"/>
    </properties>
   </object>
-  <object id="17" name="bookcase" x="319.875" y="166.25" width="32.375" height="28.875">
+  <object id="17" name="bookcase" x="319.875" y="166.25" width="32.375" height="30.6932">
    <properties>
     <property name="text" value="My bookcase filled with all my books! ....I haven't read most of them."/>
    </properties>
